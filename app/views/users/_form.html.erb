@@ -11,19 +11,24 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <!-- text entry fields -->
+    <div class="field">
+      <%= f.text_field :first_name, placeholder: "First Name", class: "col-sm-6 form-group"  %>
+    </div>
+    <div class="field">
+      <%= f.text_field :last_name, placeholder: "Last Name", class: "col-sm-6 form-group" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :email, placeholder: "Your Email", class: "col-sm-12 form-group" %>
+    </div>
+    <div class="field">
+      <%= f.password_field :password, placeholder: "Your New Password", class: "col-sm-12 form-group" %>
+    </div>
+    <div class="field">
+      <%= f.password_field :password_confirmation, placeholder: "Confirm Your Password", class: "col-sm-12 form-group" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Sign Up!", class: "btn btn-success col-sm-12" %>
+    </div>
+
 <% end %>
