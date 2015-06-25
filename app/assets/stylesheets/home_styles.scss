@@ -1,0 +1,47 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  background-color: #2B78E4;
+}
+
+.navbar-brand:link {
+  color: white;
+}
+
+.content {
+  margin-top: 80px;
+}
+
+.signup-wrapper {
+  padding-top: 60px;
+}
+
+h1 {
+  padding: 0 0 10px 15px;
+}
+
+h2 {
+  padding-bottom: 10px;
+}
+
+.btn-info {
+  margin-top: 17px;
+}
+
+.btn-success {
+  margin-top: 15px;
+}
+
+.email, .password {
+  color: white;
+  margin-bottom: -2px;
+}
+
+.navbar-brand {
+  margin-top: 10px;
+  padding-right: 10px;
+  font-size: 300%;
+}

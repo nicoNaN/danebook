@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render partial: 'header' %>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Danebook</a>
+        </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+          <form class="navbar-form navbar-right form-vertical">
+            <div class="form-group">
+            <p class="email">Email</p>
+              <input type="email" class="form-control">
+            </div>
+            <div class="form-group">
+            <p class="password">Password</p>
+              <input type="password" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-info">Log in</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <!-- container for all content below nav -->
+    <main class="container">
+
+    <!-- all content goes into this one row below nav -->
+      <div class="row">
+
+      <!-- col where landing message lives, left side -->
+        <section class="col-sm-7 content">
+          <h2>Connect with all your friends!</h2>
+          <ul>
+            <li>See photos and updates in your news feed.</li>
+            <br/>
+            <li>Post your status for the world to see from your profile.</li>
+            <br/>
+            <li>Get in touch with your friends by "friending" them.</li>
+            <br/>
+            <li>Like things because you're a positive person!</li>
+          </ul>
+        </section>
+
+        <!-- col where signup form lives, right side -->
+        <div class="col-sm-5 signup-wrapper">
+          <!-- container-fluid to keep size 5 units -->
+          <div class="container-fluid">
+            <div class="row">
+
+              <h1>Sign Up</h1>
+
+              <form class="form">
+
+              <!-- text entry fields -->
+                <div class="col-sm-6 form-group">
+                  <input type="name" class="form-control" placeholder="First Name">
+                </div>
+                <div class="col-sm-6 form-group">
+                  <input type="name" class="form-control" placeholder="Last Name">
+                </div>
+                <div class="col-sm-12 form-group">
+                  <input type="email" class="form-control" placeholder="Your Email">
+                </div>
+                <div class="col-sm-12 form-group">
+                  <input type="password" class="form-control" placeholder="Your New Password">
+                </div>
+                <div class="col-sm-12 form-group">
+                  <input type="password" class="form-control" placeholder="Confirm Your Password">
+                </div>
+
+                <!-- birthdate selectors -->
+                <div class="birthdate">
+                  <h3 class="col-sm-12">Birthday</h3>
+                  <div class="col-sm-4">
+                    <select class="form-control">
+                      <option value="one">Month</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <select class="form-control">
+                      <option value="one">Day</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-4">
+                    <select class="form-control">
+                      <option value="one">Year</option>
+                    </select>
+                  </div>
+                </div>
+
+            </div> <!-- i don't know what this is, but things break without it -->
+
+                <!-- gender selection -->
+                <div class="radio">
+                  <label class="col-sm-4">
+                    <input type="radio" name="optradio">Female
+                  </label>
+                  <label class="col-sm-8">
+                    <input type="radio" name="optradio">Male
+                  </label>
+                </div>
+
+                <!-- signup button -->
+                <div class="signup-button">
+                  <button type="button" class="btn btn-success col-sm-12">Sign Up!</button>
+                </div>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- and finally, the footer -->
+      <footer class="col-sm-12 copyright">
+        <hr>
+        &copy; Company 2015
+      </footer>
+
+    </main>
+
+  </body>
+</html>
