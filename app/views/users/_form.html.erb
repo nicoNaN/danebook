@@ -27,8 +27,24 @@
     <div class="field">
       <%= f.password_field :password_confirmation, placeholder: "Confirm Your Password", class: "col-sm-12 form-group" %>
     </div>
+    <div class="birthdate">
+      <h3>Birthday</h3>
+      <%= f.date_select :birthday, prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: 1900 %>
+    </div>
+    <div class="gender">
+      <%= f.label "Male" %>
+      <%= f.radio_button :gender, 'male' %>
+      <%= f.label "Female" %>
+      <%= f.radio_button :gender, 'female' %>
+      <%= f.label "Lizardkin" %>
+      <%= f.radio_button :gender, 'lizardkin' %>
+    </div>
     <div class="actions">
       <%= f.submit "Sign Up!", class: "btn btn-success col-sm-12" %>
+    </div>
+
+
+
     </div>
 
 <% end %>
