@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  resources :users
+  resource :session, only: [:new, :create, :destroy]
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy"
+
+  root 'users#new'
   StaticPagesController.action_methods.each do |action|
     get "/#{action}", to: "static_pages##{action}", as: "#{action}_page"
   end

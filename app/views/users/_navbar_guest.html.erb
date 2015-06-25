@@ -1,0 +1,39 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Danebook</a>
+    </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse">
+      <%= form_tag session_path, class: "navbar-form navbar-right form-vertical" do %>
+        <div class="form-group">
+          <%= label_tag class: "email" do %>
+            Email
+            <%= text_field_tag :email %>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= label_tag class: "password" do %>
+            Password
+            <%= password_field_tag :password %>
+          <% end %>
+        </div>
+        <div class="form-group">
+          <%= label_tag do %>
+            Remember me?
+            <%= check_box_tag :remember_me %>
+          <% end %>
+        </div>
+        <%= submit_tag "Log in", class: "btn btn-info" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

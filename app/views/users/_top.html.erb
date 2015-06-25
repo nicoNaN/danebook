@@ -1,0 +1,42 @@
+<!-- container for all content below nav -->
+<header class="container">
+
+<!-- all content goes into this one row below nav -->
+  <div class="row">
+
+  <!-- col where landing message lives, left side -->
+    <section class="col-sm-12 content">
+      <%= image_tag("fuyuki.png", :alt => "Cover Image", :class => "cover-img") %>
+    </section>
+
+    <!-- col where signup form lives, right side -->
+    <div class="col-sm-12 signup-wrapper">
+      <!-- container-fluid to keep size 5 units -->
+      <div class="container-fluid">
+        <div class="row">
+
+          <%= image_tag("rin.png", :alt => "Profile Picture", :class => "profile-img") %>
+
+          <ul class="nav nav-tabs">
+            <li role="presentation" class="col-sm-offset-3">
+              <%= link_to "Timeline", timeline_page_path %>
+            </li>
+            <li role="presentation">
+              <%= link_to "About", about_page_path %>
+            </li>
+            <li role="presentation">
+              <%= link_to "Photos (123)", photos_page_path %>
+            </li>
+            <li role="presentation">
+              <%= link_to "Friends (542)", friends_page_path %>
+            </li>
+            <li role="presentation" class="col-sm-offset-3 pull-right">
+              <%= link_to "Edit Profile", about_edit_page_path %>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

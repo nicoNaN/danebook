@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render partial: 'header' %>
+  </head>
+
+  <body>
+    <% if signed_in_user? %>
+      <%= render partial: 'navbar' %>
+    <% else %>
+      <%= render partial: 'navbar_guest' %>
+    <% end %>
+
+    <!-- container for all content below nav -->
+    <main class="container">
+
+    <!-- all content goes into this one row below nav -->
+      <div class="row">
+
+      <!-- col where landing message lives, left side -->
+        <section class="col-sm-7 content">
+          <% flash.each do |type, msg| %>
+            <% if type == "error" %>
+              <%= content_tag :div, msg, class: "alert alert-danger" %>
+            <% else %>
+              <%= content_tag :div, msg, class: "alert alert-success" %>
+            <% end %>
+          <% end %>
+          <h2>Connect with all your friends!</h2>
+          <ul>
+            <li>See photos and updates in your news feed.</li>
+            <br/>
+            <li>Post your status for the world to see from your profile.</li>
+            <br/>
+            <li>Get in touch with your friends by "friending" them.</li>
+            <br/>
+            <li>Like things because you're a positive person!</li>
+          </ul>
+        </section>
+
+        <!-- col where signup form lives, right side -->
+        <div class="col-sm-5 signup-wrapper">
+          <!-- container-fluid to keep size 5 units -->
+          <div class="container-fluid">
+            <div class="row">
+
+              <h1>Sign Up</h1>
+
+              <%= render partial: 'form' %>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- and finally, the footer -->
+      <footer class="col-sm-12 copyright">
+        <hr>
+        &copy; Company 2015
+      </footer>
+
+    </main>
+
+  </body>
+</html>
