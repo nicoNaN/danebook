@@ -19,12 +19,15 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(current_user.id)
+    @profile = Profile.find(current_user.profile.id)
   end
 
   # POST /users
   # POST /users.json
   def create
     @user = User.new(user_params)
+    @new_profile = @user.build_profile
 
     respond_to do |format|
       if @user.save

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    resource :profile
+  end
   resource :session, only: [:new, :create, :destroy]
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
