@@ -7,11 +7,17 @@
     <% end %>
   <% end %>
   <div class="row section-header">
-    <div class="col-sm-2 col-sm-offset-5">
-      <h1>About</h1>
+    <div class="col-sm-12 text-center">
+      <% if params[:user_id] == current_user.id.to_s %>
+        <h1>Your profile</h1>
+      <% else %>
+        <h1>About <%= @user.first_name + ' ' + @user.last_name %>
+      <% end %>
     </div>
     <div class="col-sm-2 col-sm-offset-3 edit-button">
-      <%= link_to "Edit your Profile", edit_user_profile_path(@user.id), class: "btn btn-primary" %>
+      <% if params[:user_id] == current_user.id %>
+        <%= link_to "Edit your Profile", edit_user_profile_path(@user.id), class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
   <div class="row about-content">
