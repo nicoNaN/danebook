@@ -22,6 +22,13 @@ class ApplicationController < ActionController::Base
     cookies.delete(:auth_token)
   end
 
+  def require_current_user
+    unless params[:user_id] == current_user.id.to_s
+      flash[:error] = "You can only edit your own profile!"
+      redirect_to user_profile_path(current_user.id)
+    end
+  end
+
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end

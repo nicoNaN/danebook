@@ -5,6 +5,8 @@ User.destroy_all
   u.first_name = Faker::Name.first_name
   u.last_name = Faker::Name.last_name
   u.email = Faker::Internet.email
+  u.birthday = rand(-200..200).days.ago
+  u.gender = ['1','2','3'].sample
   u.password = "ayy_lmao"
   u.password_confirmation = "ayy_lmao"
   u.save!
@@ -16,7 +18,7 @@ User.all.each do |user|
     college: Faker::Lorem.word.capitalize + ' University',
     hometown: Faker::Address.city + ', ' + Faker::Address.state_abbr,
     residence: Faker::Address.city + ', ' + Faker::Address.state_abbr,
-    phone_number: Faker::PhoneNumber.phone_number,
+    phone_number: Faker::Number.number(10),
     quotes: Faker::Lorem.sentence,
     about: Faker::Lorem.paragraph
   )

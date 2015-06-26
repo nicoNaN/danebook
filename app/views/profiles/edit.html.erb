@@ -1,0 +1,111 @@
+<main id="about" class="container">
+  <div class="row section-header">
+    <div class="col-sm-2 col-sm-offset-5">
+      <h1>About</h1>
+    </div>
+    <div class="col-sm-2 col-sm-offset-3 edit-button">
+      <%= link_to "Edit your Profile", edit_user_profile_path(@user.id), class: "btn btn-primary" %>
+    </div>
+  </div>
+  <div class="row about-content">
+    <div class="col-sm-4 col-sm-offset-1">
+      <%= form_for [:user, @profile] do |f| %>
+        <% if @profile.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+            <ul>
+            <% @profile.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Basic Information</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>Birthday:</strong>
+        </div>
+        <div class="col-sm-7">
+          <%= @user.birthday.strftime("%B #{@user.birthday.day.ordinalize}, %Y") %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>School:</strong>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :college %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>Hometown:</strong>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :hometown %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>Currently Lives:</strong>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :residence %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Contact Information</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>Email:</strong>
+        </div>
+        <div class="col-sm-7">
+          <%= @user.email %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>Phone number:</strong>
+        </div>
+        <div class="col-sm-7">
+          <%= f.text_field :phone_number %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-sm-offset-1">
+      <div class="row">
+        <div class="col-sm-9">
+          <h3>Words to Live By</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+          <%= f.text_area :quotes, size: "65x5" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-9">
+          <h3>About Me</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-10">
+        <%= f.text_area :about, size: "65x10" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2 save-changes">
+      <%= f.submit "Save Changes", class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+  <% end %>
+</main>

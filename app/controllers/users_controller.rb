@@ -27,12 +27,11 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-    @new_profile = @user.build_profile
-
+    @new_profile = @user.build_profile(generate_profile)
     respond_to do |format|
       if @user.save
         sign_in(@user)
-        format.html { redirect_to root_path, notice: 'User was successfully created.' }
+        format.html { redirect_to user_profile_path(@user.id), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -74,5 +73,15 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :birthday, :gender, :password, :password_confirmation)
+    end
+
+    def generate_profile
+      { user_id: @user.id,
+      college: Faker::Lorem.word.capitalize + ' University',
+      hometown: Faker::Address.city + ', ' + Faker::Address.state_abbr,
+      residence: Faker::Address.city + ', ' + Faker::Address.state_abbr,
+      phone_number: Faker::Number.number(10),
+      quotes: Faker::Lorem.sentence,
+      about: Faker::Lorem.paragraph }
     end
 end
