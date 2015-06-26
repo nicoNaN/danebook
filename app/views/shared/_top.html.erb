@@ -22,7 +22,7 @@
               <%= link_to "Timeline", timeline_page_path %>
             </li>
             <li role="presentation">
-              <%= link_to "About", about_page_path %>
+              <%= link_to "About", user_profile_path(current_user.id) %>
             </li>
             <li role="presentation">
               <%= link_to "Photos (123)", photos_page_path %>
