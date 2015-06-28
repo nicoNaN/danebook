@@ -12,22 +12,22 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <strong>Born on: </strong>February 3, 1986
+            <strong>Born on: </strong><%= @user.birthday.strftime("%B #{@user.birthday.day.ordinalize}, %Y") %>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <strong>Went to school at: </strong>Homurahara Academy
+            <strong>Went to school at: </strong><%= @user.profile.college %>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <strong>Hometown: </strong>Fuyuki City, Japan
+            <strong>Hometown: </strong><%= @user.profile.hometown %>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <strong>Currently Lives: </strong>Fuyuki City, Japan
+            <strong>Currently Lives: </strong><%= @user.profile.residence %>
           </div>
         </div>
       </article>
@@ -185,6 +185,7 @@
 
     <div class="col-sm-8 right-column">
 
+    <% if params[:user_id] == current_user.id.to_s %>
       <!-- post box -->
       <article>
         <%= form_tag( { controller: "posts", action: "create"}, method: "post") do %>
@@ -204,6 +205,7 @@
         </div>
       <% end %>
       </article>
+    <% end %>
 
     <% @posts.each do |post| %>
       <article>
