@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   resources :posts
+  resources :posts do
+    resources :comments
+  end
 
   resources :users do
     resource :profile
+    resource :timeline
   end
   resource :session, only: [:new, :create, :destroy]
   get "login" => "sessions#new"
