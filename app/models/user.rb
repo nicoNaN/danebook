@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :gender, :birthday, presence: true
 
   has_one :profile, dependent: :destroy
+  has_many :posts
   accepts_nested_attributes_for :profile
 
   has_secure_password
