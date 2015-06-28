@@ -18,6 +18,9 @@
           <%= image_tag("rin.png", :alt => "Profile Picture", :class => "profile-img") %>
 
           <ul class="nav nav-tabs">
+            <li role="presentation" class="col-sm-offset-3 profile-name">
+              <%= link_to User.find(params[:user_id]).first_name + ' ' + User.find(params[:user_id]).last_name, user_timeline_path %>
+            </li>
             <li role="presentation" class="col-sm-offset-3">
               <%= link_to "Timeline", user_timeline_path %>
             </li>

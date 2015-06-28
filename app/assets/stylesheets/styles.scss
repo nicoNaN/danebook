@@ -127,12 +127,20 @@ h1 {
 }
 
 .nav-tabs {
-  margin-top: -30px;
+  margin-top: -80px;
 }
 
 .profile-img {
   border: 3px solid;
-  margin: -225px 0 0 10px;
+  margin: -350px 0 0 10px;
+}
+
+.profile-name {
+  a {
+  color: white;
+  }
+  font-size: 36px;
+  margin: -91px 0 0 246px;
 }
 
 .content {
