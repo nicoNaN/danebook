@@ -26,7 +26,6 @@ class ApplicationController < ActionController::Base
     unless params[:user_id] == current_user.id.to_s
       flash[:error] = "Not authorized to perform that action!"
       redirect_to user_profile_path(current_user.id)
-      fails
     end
   end
 

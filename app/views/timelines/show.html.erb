@@ -233,7 +233,7 @@
             <a href="#">Comment</a>
           </div>
           <div class="col-sm-2 col-sm-offset-6">
-            <a href="#">Delete</a>
+            <%= link_to "Delete", post_path(post.id, user_id: params[:user_id]), method: "DELETE", data: { confirm: "Are you sure you want to delete this post?" } %>
           </div>
         </div>
 
