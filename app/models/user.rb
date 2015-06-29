@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   has_many :posts
+  has_many :comments
   accepts_nested_attributes_for :profile
 
   has_secure_password

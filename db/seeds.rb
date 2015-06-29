@@ -1,5 +1,6 @@
 User.destroy_all
 Post.destroy_all
+Comment.destroy_all
 
 30.times do
   u = User.new
@@ -29,4 +30,14 @@ User.all.each do |user|
       content: Faker::Lorem.paragraph
     )
   end
+end
+
+300.times do
+  user = User.all.sample
+  post = Post.all.sample
+  Comment.create(
+    user_id: user.id,
+    post_id: post.id,
+    content: Faker::Lorem.sentence
+  )
 end
