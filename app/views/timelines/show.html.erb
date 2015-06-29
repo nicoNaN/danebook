@@ -225,7 +225,7 @@
             <p><%= post.content %></p>
           </div>
         </div>
-        <div class="row bottom-border">
+        <div class="row">
           <div class="col-sm-2">
             <a href="#">Like</a>
           </div>
@@ -234,6 +234,13 @@
           </div>
           <div class="col-sm-2 col-sm-offset-6">
             <%= link_to "Delete", post_path(post.id, user_id: params[:user_id]), method: "DELETE", data: { confirm: "Are you sure you want to delete this post?" } %>
+          </div>
+        </div>
+        <div class="row bottom-border">
+          <div class="col-sm-12">
+            <% if post.likes.count > 0 %>
+              <%= pluralize(post.likes.count, 'person') %> like this.
+            <% end %>
           </div>
         </div>
 

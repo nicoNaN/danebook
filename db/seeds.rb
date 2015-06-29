@@ -32,6 +32,16 @@ User.all.each do |user|
   end
 end
 
+500.times do
+  type = ['Post', 'Comment'].sample
+
+  like = Like.new
+  like.user_id = User.all.sample.id
+  like.likable_id = type.constantize.pluck(:id).sample
+  like.likable_type = type
+  like.save!
+end
+
 300.times do
   user = User.all.sample
   post = Post.all.sample
