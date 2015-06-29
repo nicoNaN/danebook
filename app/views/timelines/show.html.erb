@@ -227,7 +227,11 @@
         </div>
         <div class="row">
           <div class="col-sm-2">
-            <a href="#">Like</a>
+            <% if post.likes.where('user_id == ?', current_user.id).empty? %>
+              <%= link_to "Like", likes_path(like: { user_id: current_user.id, likable_type: "Post", likable_id: post.id} ), method: "CREATE" %>
+            <% else %>
+              <%= link_to "Unlike", like_path(post.likes.where('user_id == ?', current_user.id).first.id), method: "DELETE" %>
+            <% end %>
           </div>
           <div class="col-sm-2">
             <a href="#">Comment</a>
@@ -264,10 +268,16 @@
             </div>
             <div class="row timeline-comment-likes">
               <div class="col-sm-2">
-                <a href="#">Like</a>
+                <% if comment.likes.where('user_id == ?', current_user.id).empty? %>
+                  <%= link_to "Like", likes_path(like: { user_id: current_user.id, likable_type: "Comment", likable_id: comment.id} ), method: "CREATE" %>
+                <% else %>
+                  <%= link_to "Unlike", like_path(comment.likes.where('user_id == ?', current_user.id).first.id), method: "DELETE" %>
+                <% end %>
               </div>
               <div class="col-sm-9 col-sm-offset-1">
-                3 other people like this.
+                <% if comment.likes.count > 0 %>
+                  <%= pluralize(comment.likes.count, 'person') %> like this.
+                <% end %>
               </div>
             </div>
           </div>
