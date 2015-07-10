@@ -3,5 +3,5 @@ class Profile < ActiveRecord::Base
 
   validates :phone_number,
             numericality: true,
-            length: { minimum: 10, maximum: 15 }
+            length: { in: 10..15 }
 end
