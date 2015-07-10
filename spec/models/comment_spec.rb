@@ -1,19 +1,19 @@
 require 'rails_helper'
 
-describe Post do
-  let(:post){ build(:post) }
+describe Comment do
+  let(:comment){ build(:comment) }
 
   describe 'associations' do
     it 'responds to the user association' do
-      expect(post).to respond_to(:user)
+      expect(comment).to respond_to(:user)
     end
 
     it 'responds to the comments association' do
-      expect(post).to respond_to(:comments)
+      expect(comment).to respond_to(:post)
     end
 
     it 'responds to the likes association' do
-      expect(post).to respond_to(:likes)
+      expect(comment).to respond_to(:likes)
     end
   end
 end
