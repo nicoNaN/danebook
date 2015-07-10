@@ -75,6 +75,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:first_name, :last_name, :email, :birthday, :gender, :password, :password_confirmation)
     end
 
+    # perform this after user creation using a model callback
     def generate_profile
       { user_id: @user.id,
       college: Faker::Lorem.word.capitalize + ' University',
