@@ -1,12 +1,16 @@
 FactoryGirl.define do
   factory :user do
-    first_name Faker::Name.first_name
-    last_name Faker::Name.last_name
-    email Faker::Internet.email
+    sequence(:first_name){ |n| "Test#{n}" }
+    sequence(:last_name){ |n| "User#{n}" }
+    email { "#{first_name}" + "#{last_name}" + "@example.com" }
     birthday Time.now
     gender ['1','2','3'].sample
     password "ayy_lmao"
     password_confirmation "ayy_lmao"
+    after(:create) do |u|
+      create_list(:profile, 1, user: u)
+      create_list(:post, 1, user: u)
+    end 
   end
 
   factory :profile do

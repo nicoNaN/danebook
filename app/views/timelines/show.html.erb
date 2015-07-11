@@ -1,4 +1,11 @@
 <main id="about" class="container">
+  <% flash.each do |type, msg| %>
+    <% if type == "error" %>
+      <%= content_tag :div, msg, class: "alert alert-danger" %>
+    <% else %>
+      <%= content_tag :div, msg, class: "alert alert-success" %>
+    <% end %>
+  <% end %>
   <div class="row">
 
     <div class="col-sm-4 left-column">
