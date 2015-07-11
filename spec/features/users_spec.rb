@@ -37,7 +37,7 @@ feature 'Users feature testing' do
 	end
   
   context 'as a signed-in user' do
-    scenario 'can edit their own profile' do
+    scenario 'can edit their profile' do
       sign_in(user)
       click_link 'Edit your Profile'
       fill_in 'profile[college]', with: 'Test University'
@@ -46,21 +46,11 @@ feature 'Users feature testing' do
       expect(page).to have_content 'Updated your profile!'
     end
     
-    scenario 'can post to their own timeline' do
+    scenario "cannot edit someone else's profile" do
       sign_in(user)
-      visit user_timeline_path(user.id)
-      fill_in 'post[content]', with: 'Test post'
-      click_button 'Post'
-      expect(page).to have_content('Post was successfully created.')
-    end
-    
-    scenario "can post to another user's timeline" do
-      sign_in(user)
-      visit user_timeline_path(second_user.id)
-      save_and_open_page
-      fill_in 'comment[content]', with: 'Test comment'
-      click_button 'Comment'
-      expect(page).to have_content('Comment was successfully created.')
+      visit user_profile_path(second_user.id)
+      
+      expect(page).to_not have_link('Edit your Profile')
     end
   end
 	

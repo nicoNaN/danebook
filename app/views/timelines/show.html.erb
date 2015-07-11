@@ -235,7 +235,7 @@
         <div class="row">
           <div class="col-sm-2">
             <% if post.likes.where('user_id == ?', current_user.id).empty? %>
-              <%= link_to "Like", likes_path(like: { user_id: current_user.id, likable_type: "Post", likable_id: post.id} ), method: "CREATE" %>
+              <%= link_to "Like", likes_path(like: { user_id: current_user.id, likable_type: "Post", likable_id: post.id} ), method: "POST" %>
             <% else %>
               <%= link_to "Unlike", like_path(post.likes.where('user_id == ?', current_user.id).first.id), method: "DELETE" %>
             <% end %>
