@@ -28,10 +28,10 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to request.referer, notice: 'Comment was successfully created.' }
+        format.html { redirect_to :back rescue redirect_to root_path, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { redirect_to :back rescue redirect_to root_path, notice: "Couldn't create comment." }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end

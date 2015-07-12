@@ -29,6 +29,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include Capybara::DSL
   config.include UserMacros
   # FG methods
   config.include FactoryGirl::Syntax::Methods

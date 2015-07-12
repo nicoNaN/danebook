@@ -36,4 +36,12 @@ module UserMacros
     fill_in 'Password', with: user.password
     click_button 'Log in'
   end
+  
+  def current_user
+    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
+  end
+
+  def signed_in_user?
+    !!current_user
+  end
 end
