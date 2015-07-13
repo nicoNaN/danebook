@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_filter :redirect_if_signed_in, only: :new
 
   # GET /users
   # GET /users.json
@@ -84,5 +85,9 @@ class UsersController < ApplicationController
       phone_number: Faker::Number.number(10),
       quotes: Faker::Lorem.sentence,
       about: Faker::Lorem.paragraph }
+    end
+    
+    def redirect_if_signed_in
+      redirect_to user_profile_path(current_user.id) if signed_in_user?
     end
 end

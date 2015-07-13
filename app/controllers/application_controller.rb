@@ -45,4 +45,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
   helper_method :signed_in_user?
+  
+  def assigned_user_same_as_current?(user)
+    user = current_user
+  end
+  helper_method :assigned_user_same_as_current?
+  
 end

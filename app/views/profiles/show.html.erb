@@ -8,7 +8,7 @@
   <% end %>
   <div class="row section-header">
     <div class="col-sm-12 text-center">
-      <% if params[:user_id] == current_user.id.to_s %>
+      <% if assigned_user_same_as_current?(@user) %>
         <h1>Your profile</h1>
       <% else %>
         <h1>About <%= @user.first_name + ' ' + @user.last_name %>
