@@ -1,3 +1,5 @@
+<%= render partial: '/shared/top' %>
+
 <main id="about" class="container">
   <% flash.each do |type, msg| %>
     <% if type == "error" %>
@@ -11,7 +13,7 @@
       <% if assigned_user_same_as_current?(@user) %>
         <h1>Your profile</h1>
       <% else %>
-        <h1>About <%= @user.first_name + ' ' + @user.last_name %>
+        <h1>About <%= @user.full_name %>
       <% end %>
     </div>
   </div>
@@ -27,7 +29,7 @@
           <strong>Birthday:</strong>
         </div>
         <div class="col-sm-7">
-          <%= @user.birthday.strftime("%B #{@user.birthday.day.ordinalize}, %Y") %>
+          <%= @user.formatted_birthday %>
         </div>
       </div>
       <div class="row">

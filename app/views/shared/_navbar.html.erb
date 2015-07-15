@@ -22,14 +22,16 @@
         <li><%= link_to "Logout", logout_path, :method => :delete %></li>
       </ul>
 
-     <form class="navbar-form">
-        <div class="form-group" style="display:inline;">
-          <div class="input-group" style="display:table;">
-            <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span>
-            <input class="form-control" name="search" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text">
-          </div>
+      <div class="form-group" style="display:inline;">
+        <div class="input-group" style="display:table;">
+          <!-- <span class="input-group-addon" style="width:1%;"><span class="glyphicon glyphicon-search"></span></span> -->
+          <!-- <input class="form-control" name="search" placeholder="Search Here" autocomplete="off" autofocus="autofocus" type="text"> -->
+          <%= form_tag search_path, method: "post" do %>
+            <%= text_field_tag :search, params[:search], class: "form-control" %>
+            <%= submit_tag "Search", name: nil %>
+          <% end %>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </nav>

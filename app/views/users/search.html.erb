@@ -1,0 +1,36 @@
+<main id="search-results" class="container">
+  <p class="results-stats">Showing <%= pluralize(@users.count, 'user') %> whose first or last names contain <%= params[:search] %></p>
+  <div class="row section-header">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1>Search Results</h1>
+    </div>
+  </div>
+  <div class="row section-content">
+    <div class="col-sm-12">
+
+  <% if @users.empty? %>
+    <p class="results-stats">No results!</p>
+  <% else %>
+    <% @users.each do |user| %>
+      <div class="row friend-listing">
+        <div class="col-sm-4">
+          <%= image_tag("thumbnail.png", :alt => "Thumbnail Image", :class => "img-responsive") %>
+        </div>
+        <div class="col-sm-5">
+          <h4 class="friend-name"><%= link_to user.full_name, user_profile_path(user.id) %></h4>
+          <p>432 friends</p>
+          <br />
+          <p>Currently lives in <%= user.profile.residence %></p>
+          <p>From <%= user.profile.hometown %></p>
+          <p>Born on <%= user.formatted_birthday %></p>
+        </div>
+        <div class="col-sm-3">
+          <button type="button" class="unfriend btn btn-primary">Unfriend me</button>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+    </div>
+  </div>
+</main>

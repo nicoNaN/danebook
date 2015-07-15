@@ -10,7 +10,7 @@ FactoryGirl.define do
     after(:create) do |u|
       create_list(:profile, 1, user: u)
       create_list(:post, 1, user: u)
-    end 
+    end
   end
 
   factory :profile do

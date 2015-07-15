@@ -23,4 +23,21 @@ class User < ActiveRecord::Base
     generate_token
     save!
   end
+
+  def self.search(term)
+    if term
+      User.where("first_name LIKE ? OR last_name LIKE ?", "%#{term}%", "%#{term}%")
+    else
+      User.all
+    end
+  end
+
+  def full_name
+    first_name + ' ' + last_name
+  end
+
+  def formatted_birthday
+    birthday.strftime("%B #{birthday.day.ordinalize}, %Y")
+  end
+
 end

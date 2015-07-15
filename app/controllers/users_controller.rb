@@ -8,6 +8,10 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def search
+    @users = User.search(params[:search])
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -86,7 +90,7 @@ class UsersController < ApplicationController
       quotes: Faker::Lorem.sentence,
       about: Faker::Lorem.paragraph }
     end
-    
+
     def redirect_if_signed_in
       redirect_to user_profile_path(current_user.id) if signed_in_user?
     end
