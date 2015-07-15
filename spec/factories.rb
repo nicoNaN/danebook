@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :friendship do
+    
+  end
+
   factory :user do
     sequence(:first_name){ |n| "Test#{n}" }
     sequence(:last_name){ |n| "User#{n}" }

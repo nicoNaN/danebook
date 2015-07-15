@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :posts
   has_many :comments
+  has_many :friendships
+  has_many :friends, through: :friendships
   accepts_nested_attributes_for :profile
 
   has_secure_password

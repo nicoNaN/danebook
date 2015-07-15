@@ -25,7 +25,12 @@
           <p>Born on <%= user.formatted_birthday %></p>
         </div>
         <div class="col-sm-3">
-          <button type="button" class="unfriend btn btn-primary">Unfriend me</button>
+          <!-- get this out of view -->
+          <% if current_user.friendships.where("friend_id IS ?", user.id).empty? %>
+            <%= button_to "Friend me", friendships_path(friend_id: user.id), class: "unfriend btn btn-primary", method: "post" %>
+          <% else %>
+            <%= button_to "Unfriend me", friendship_path(id: user.id), class: "unfriend btn btn-primary", method: "delete" %>
+          <% end %>
         </div>
       </div>
     <% end %>

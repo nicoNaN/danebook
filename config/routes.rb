@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  resources :friendships, only: [:create, :destroy]
+
   resources :posts
   resources :posts do
     resources :comments
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
     resource :timeline
+    resource :friends
   end
   resource :session, only: [:new, :create, :destroy]
   get "login" => "sessions#new"

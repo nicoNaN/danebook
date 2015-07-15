@@ -31,7 +31,7 @@
               <%= link_to "Photos (123)", photos_page_path %>
             </li>
             <li role="presentation">
-              <%= link_to "Friends (542)", friends_page_path %>
+              <%= link_to "Friends (542)", user_friends_path(params[:user_id]) %>
             </li>
             <li role="presentation" class="col-sm-offset-3 pull-right">
               <% if params[:user_id] == current_user.id.to_s %>

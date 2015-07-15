@@ -1,0 +1,29 @@
+<%= render partial: '/shared/top' %>
+
+<main id="friends-list" class="container">
+  <div class="row section-header">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1>Friends</h1>
+    </div>
+  </div>
+  <div class="row section-content">
+
+  <% @user.friends.each do |friend| %>
+    <div class="col-sm-6">
+      <div class="row friend-listing">
+        <div class="col-sm-4">
+          <%= image_tag("thumbnail.png", :alt => "Thumbnail Image", :class => "img-responsive") %>
+        </div>
+        <div class="col-sm-5">
+          <h4 class="friend-name"><%= link_to friend.full_name, user_profile_path(friend.id) %></h4>
+          <p><%= friend.friends.count %> friends</p>
+        </div>
+        <div class="col-sm-3">
+          <%= button_to "Unfriend me", friendship_path(id: friend.id), class: "unfriend btn btn-primary", method: "delete" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  </div>
+</main>

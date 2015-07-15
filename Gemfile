@@ -54,3 +54,5 @@ group :development, :test do
   gem 'spring', '~> 1.3.6'
   gem 'rspec-rails'
 end
+
+gem 'mocha', group: :test
