@@ -17,10 +17,10 @@
     <div class="col-sm-4">
       <div class="row photo-listing">
         <div class="col-sm-12">
-          <a href="#">
-            <%= image_tag photo.data.url, :class => "img-responsive img-thumbnail center-block" %>
-          </a>
-          <p class="hover-text">Uploaded Jan. 1, 2015</p>
+          <%= link_to user_photo_path(id: photo.id) do %>
+            <%= image_tag photo.data.url, class: "img-responsive img-thumbnail center-block" %>
+          <% end %>
+          <p class="hover-text"><%= photo.created_at.strftime("%B #{photo.created_at.day.ordinalize}, %Y") %></p>
         </div>
       </div>
     </div>

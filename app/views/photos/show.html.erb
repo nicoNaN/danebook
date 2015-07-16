@@ -1,14 +1,28 @@
-<p id="notice"><%= notice %></p>
+<main id="search-results" class="container">
+  <div class="row section-header">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1>Photos</h1>
+    </div>
+  </div>
+  <div class="row section-content">
 
-<p>
-  <strong>User ID:</strong>
-  <%= @photo.user_id %>
-</p>
+    <div class="col-sm-8">
+      <%= image_tag @photo.data.url, class: "img-responsive img-thumbnail center-block" %>
+    </div>
 
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag @photo.data.url %>
-</p>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-4">
+          <a href="#">
+            <%= image_tag("thumbnail.png", :alt => "Thumbnail Image", :class => "img-thumbnail center-block timeline-thumbnail") %>
+          </a>
+        </div>
+        <div class="col-sm-8 timeline-poster-name">
+          <a href="#"><%= @photo.user.full_name %></a>
+          <p><%= @photo.created_at.strftime("%A %-m/%-d/%Y") %></p>
+        </div>
+      </div>
+    </div>
 
-<%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+  </div>
+</main>

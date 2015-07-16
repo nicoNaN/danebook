@@ -1,25 +1,35 @@
-<%= form_for(@photo) do |f| %>
-  <% if @photo.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
-
-      <ul>
-      <% @photo.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<main id="search-results" class="container">
+  <div class="row section-header">
+    <div class="col-sm-4 col-sm-offset-4">
+      <h1>Photos</h1>
     </div>
-  <% end %>
+  </div>
+  <div class="row section-content">
+    <div class="col-sm-12 text-center">
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+      <%= form_for(@photo) do |f| %>
+        <% if @photo.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+            <ul>
+            <% @photo.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class="field">
+          <p><strong>Select a photo from your hard drive</strong></p>
+          <%= f.file_field :data %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
+
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :data %><br>
-    <%= f.file_field :data %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</main>
