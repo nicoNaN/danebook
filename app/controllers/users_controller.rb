@@ -38,6 +38,7 @@ class UsersController < ApplicationController
         sign_in(@user)
         format.html { redirect_to user_profile_path(@user.id), notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
+        User.send_welcome_email(@user).deliver
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }

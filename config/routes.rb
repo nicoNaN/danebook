@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resource :profile
     resource :timeline
     resource :friends
+    resource :newsfeed
     resources :photos
   end
   resource :session, only: [:new, :create, :destroy]

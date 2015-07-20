@@ -1,6 +1,7 @@
 User.destroy_all
 Post.destroy_all
 Comment.destroy_all
+Friendship.destroy_all
 
 30.times do
   u = User.new
@@ -24,11 +25,28 @@ User.all.each do |user|
     quotes: Faker::Lorem.sentence,
     about: Faker::Lorem.paragraph
   )
+
   10.times do
     Post.create(
       user_id: user.id,
-      content: Faker::Lorem.paragraph
+      content: Faker::Lorem.paragraph,
+      created_at: (rand*10).days.ago
     )
+  end
+
+   chosen_friend_ids = []
+
+  5.times do
+    new_friend_id = User.all.sample.id
+    until !chosen_friend_ids.include?(new_friend_id)
+      new_friend_id = User.all.sample.id
+    end
+    Friendship.create(
+      user_id: user.id,
+      friend_id: new_friend_id
+    )
+
+    chosen_friend_ids << new_friend_id
   end
 end
 

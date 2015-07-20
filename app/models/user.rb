@@ -35,6 +35,28 @@ class User < ActiveRecord::Base
     end
   end
 
+  def friend_posts_recent
+    posts = []
+    self.friends.each do |friend|
+      friend.posts.each do |post|
+        posts << post
+      end
+    end
+    posts = posts.to_a.sort_by &:created_at
+    posts.last(10).reverse
+  end
+
+  def friend_posts_all
+    posts = []
+    self.friends.each do |friend|
+      friend.posts.each do |post|
+        posts << post
+      end
+    end
+    posts = posts.to_a.sort_by &:created_at
+    posts.reverse
+  end
+
   def full_name
     first_name + ' ' + last_name
   end
@@ -42,5 +64,10 @@ class User < ActiveRecord::Base
   def formatted_birthday
     birthday.strftime("%B #{birthday.day.ordinalize}, %Y")
   end
+  
+  private
 
+  def self.send_welcome_email(user)
+    UserMailer.welcome(user).deliver
+  end
 end

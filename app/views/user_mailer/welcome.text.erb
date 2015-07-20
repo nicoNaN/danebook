@@ -1,0 +1,5 @@
+Welcome to Danebook!
+
+Hi <%= @user.full_name %>, welcome to Danebook!
+
+View your account at <%= link_to "#{user_profile_url(@user.id)", user_profile_url(@user.id) %>
