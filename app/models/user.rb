@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
     end
   end
 
+  # refactor to sql queries
+  # recent activity should include comments and likes
   def friend_posts_recent
     posts = []
     self.friends.each do |friend|
@@ -64,7 +66,7 @@ class User < ActiveRecord::Base
   def formatted_birthday
     birthday.strftime("%B #{birthday.day.ordinalize}, %Y")
   end
-  
+
   private
 
   def self.send_welcome_email(user)

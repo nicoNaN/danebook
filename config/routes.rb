@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 
-  post 'search' => 'users#search'
+  get 'search' => 'users#search'
 
   root 'users#new'
   StaticPagesController.action_methods.each do |action|
